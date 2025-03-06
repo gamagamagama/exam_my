@@ -47,33 +47,24 @@ char	*ft_itoa(int nbr)
 ///////////////////////////////////////////////////////////////
 static int	numlen(int n)
 {
-	int	i;
-
-	i = 0;
-	if (n < 0)
-		i++;
-	if (n == 0)
-		i++;
-	while (n != 0)
-	{
-		i++;
-		n /= 10;
-	}
-	return (i);
+    int len = (n <= 0); 
+    while (n != 0)
+    {
+        n /= 10;
+        len++;
+    }
+    return (len);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*num_str;
-	int		len;
-	int		sign;
+	char *num_str = (char *)malloc(sizeof(char) * (len + 1));
+	int	len = numlen(n);
+	int	sign = 1;
 
-	len = numlen(n);
-	sign = 1;
-	num_str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!num_str)
-		return (0);
-	num_str[len] = 0;
+		return (NULL);
+	num_str[len] = '\0';
 	len--;
 	if (n < 0)
 	{
@@ -84,7 +75,7 @@ char	*ft_itoa(int n)
 		num_str[len] = '0';
 	while (n != 0)
 	{
-		num_str[len] = (n % 10 * sign) + '0';
+		num_str[len] = (char)(((n % 10) * sign) + '0');
 		n /= 10;
 		len--;
 	}
