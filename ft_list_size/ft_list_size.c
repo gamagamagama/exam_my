@@ -7,7 +7,6 @@ typedef struct    s_list
 
 int ft_list_size(t_list *begin_list)
 {
-    int len =1;
     if (begin_list == 0)
     {
 		return (0);
