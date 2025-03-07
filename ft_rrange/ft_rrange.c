@@ -44,3 +44,27 @@ int main (void)
         i++;
     }
 }
+
+//////////////////////////////////////////
+
+#include <stdlib.h>
+
+int ft_abs(int n)
+{
+    return (n < 0) ? -n : n;
+}
+
+int *ft_rrange(int start, int end)
+{
+    int size = ft_abs(end - start) + 1;
+    int *arr = (int*)malloc(sizeof(int) * size);
+
+    if (!arr)
+        return NULL;
+
+    int step = (start > end) ? 1 : -1;
+    for (int i = 0; i < size; i++, end += step)
+        arr[i] = end;
+    
+    return arr;
+}
