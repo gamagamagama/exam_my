@@ -18,10 +18,10 @@ unsigned char reverse_bits(unsigned char octet)
 {
     unsigned char res = 0;
 
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < 8; i++, octet>>=1)
     {
         res = (res << 1) | (octet & 1);
-        octet >>= 1;
+        //octet >>= 1;
     }
     return res;
 }
